@@ -24,6 +24,21 @@ app.get('/api/items', async(req, res) => {
     }
 })
 
+
+// Fetch list of accounts
+app.get('/api/accounts', async(req, res) => {
+    try {
+        const allItems = await itemsPool.query(
+            'SELECT * FROM accounts'
+        );
+        res.json({ allItems });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message)
+    }
+})
+
+
 app.post('/api/items', async (req, res) => {
     const { description } = req.body;
     try {
