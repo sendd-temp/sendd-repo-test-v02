@@ -38,7 +38,7 @@ app.get('/api/assets', async(req, res) => {
     }
 })
 
-
+// --- old - delete
 app.post('/api/items', async (req, res) => {
     const { description } = req.body;
     try {
@@ -48,6 +48,24 @@ app.post('/api/items', async (req, res) => {
         );
         res.json({ 
             message: "New item added!",
+            item: newItem.rows
+         });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message)
+    }
+})
+
+// Create new asset
+app.post('/api/assets-test', async (req, res) => {
+    const { description } = req.body;
+    try {
+        const newItem = await itemsPool.query(
+            'INSERT INTO assets-test (asset_name) VALUES ($1) RETURNING *',
+            [description]
+        );
+        res.json({ 
+            message: "New asset added!",
             item: newItem.rows
          });
     } catch (error) {
