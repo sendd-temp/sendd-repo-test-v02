@@ -12,10 +12,18 @@ app.get('/', (req, res) => {
     res.send('Simple API homepage');
 })
 
-app.get('/api/items', async(req, res) => {
+
+
+
+// --------------
+// Transactions
+// --------------
+
+// Fetch all assets
+app.get('/api/assets', async(req, res) => {
     try {
         const allItems = await itemsPool.query(
-            'SELECT * FROM items'
+            'SELECT * FROM assets'
         );
         res.json({ allItems });
     } catch (error) {
@@ -24,12 +32,34 @@ app.get('/api/items', async(req, res) => {
     }
 })
 
+// Create new asset
+app.post('/api/assets', async (req, res) => {
+    const { asset_name } = req.body;
+    try {
+        const newItem = await itemsPool.query(
+            'INSERT INTO assets (asset_name) VALUES ($1) RETURNING *',
+            [asset_name]
+        );
+        res.json({ 
+            message: "New asset added!",
+            item: newItem.rows
+         });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error.message)
+    }
+})
 
-// Fetch list of assets TEST
-app.get('/api/assets_test', async(req, res) => {
+
+
+
+
+
+// --- old placeholder for testing as tends to work
+app.get('/api/items', async(req, res) => {
     try {
         const allItems = await itemsPool.query(
-            'SELECT * FROM assets_test'
+            'SELECT * FROM items'
         );
         res.json({ allItems });
     } catch (error) {
@@ -56,23 +86,11 @@ app.post('/api/items', async (req, res) => {
     }
 })
 
-// Create new asset
-app.post('/api/assets_test', async (req, res) => {
-    const { asset_name } = req.body;
-    try {
-        const newItem = await itemsPool.query(
-            'INSERT INTO assets_test (asset_name) VALUES ($1) RETURNING *',
-            [asset_name]
-        );
-        res.json({ 
-            message: "New asset added!",
-            item: newItem.rows
-         });
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(error.message)
-    }
-})
+
+
+
+
+
 
 app.listen(5070, () => {
     console.log("Server running on port 5070");
