@@ -38,7 +38,7 @@ app.get('/api/assets_test', async(req, res) => {
     }
 })
 
-// --- old - delete
+// --- old placeholder for testing as tends to work
 app.post('/api/items', async (req, res) => {
     const { description } = req.body;
     try {
