@@ -2,6 +2,9 @@ const express = require('express');
 
 const app = express();
 app.use(express.json());
+/*
+app.use(express.json({ extended: false }));
+*/
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -34,7 +37,7 @@ app.get('/api/assets', async(req, res) => {
 
 // Create new asset
 app.post('/api/assets', async (req, res) => {
-    const { asset_name } = req.body;
+    const { asset_name, asset_code, asset_type } = req.body;
     try {
         const newItem = await itemsPool.query(
             'INSERT INTO assets (asset_name) VALUES ($1) RETURNING *',
