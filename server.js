@@ -57,11 +57,11 @@ app.post('/api/items', async (req, res) => {
 })
 
 // Create new asset
-app.post('/api/assets-test', async (req, res) => {
+app.post('/api/assets_test', async (req, res) => {
     const { description } = req.body;
     try {
         const newItem = await itemsPool.query(
-            'INSERT INTO assets-test (asset_name) VALUES ($1) RETURNING *',
+            'INSERT INTO assets_test (asset_name) VALUES ($1) RETURNING *',
             [description]
         );
         res.json({ 
