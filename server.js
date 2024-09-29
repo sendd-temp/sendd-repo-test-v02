@@ -25,11 +25,11 @@ app.get('/api/items', async(req, res) => {
 })
 
 
-// Fetch list of accounts
-app.get('/api/accounts', async(req, res) => {
+// Fetch list of assets
+app.get('/api/assets', async(req, res) => {
     try {
         const allItems = await itemsPool.query(
-            'SELECT * FROM accounts'
+            'SELECT * FROM assets'
         );
         res.json({ allItems });
     } catch (error) {
