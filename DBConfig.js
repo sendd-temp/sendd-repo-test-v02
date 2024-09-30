@@ -4,12 +4,14 @@ const { Pool } = pkg;
 
 
 const itemsPool = new Pool({
-
     connectionString: process.env.DATABASE_URL,
+
     ssl: {
         rejectUnauthorized: false
     }
 
+
+// ssl: process.env.DATABASE_URL ? true : false
 
 /*  HACK 1 if above doesnt work
 
@@ -26,6 +28,8 @@ connectionString: process.env.DATABASE_URL || 'postgresql://sendd_user_test_01:X
 
 
 });
+
 //module.exports = itemsPool;
 export default itemsPool;
+
 
