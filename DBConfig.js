@@ -1,7 +1,9 @@
-const { Pool } = require('pg');
+// const { Pool } = require('pg');
+import pkg from 'pg';
+const { Pool } = pkg;
+
+
 const itemsPool = new Pool({
-
-
 
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -24,4 +26,6 @@ connectionString: process.env.DATABASE_URL || 'postgresql://sendd_user_test_01:X
 
 
 });
-module.exports = itemsPool;
+//module.exports = itemsPool;
+export default itemsPool;
+

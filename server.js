@@ -1,15 +1,19 @@
-const express = require('express');
+// const express = require('express');
+import express from 'express';
 
 const app = express();
 app.use(express.json());
-/*
-app.use(express.json({ extended: false }));
-*/
 
-const dotenv = require('dotenv');
+
+// const dotenv = require('dotenv');
+import dotenv from 'dotenv';
+
 dotenv.config();
 
-const itemsPool = require('./DBConfig');
+
+//const itemsPool = require('./DBConfig');
+import itemsPool from './DBConfig.js';
+
 
 app.get('/', (req, res) => {
     res.send('Simple API homepage');
