@@ -6,9 +6,8 @@ app.use(express.json());
 
 
 // const dotenv = require('dotenv');
-import dotenv from 'dotenv';
-
-dotenv.config();
+//import dotenv from 'dotenv';
+//dotenv.config();
 
 
 //const itemsPool = require('./DBConfig');

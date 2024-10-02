@@ -1,4 +1,4 @@
-// From Binance 2024=10-01
+// From Binance 2024-10-01
 // https://binance.github.io/binance-connector-node/
 
 

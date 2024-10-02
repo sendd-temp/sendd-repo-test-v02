@@ -1,5 +1,5 @@
 {
-  "name": "sendd-vs-code-folder",
+  "name": "sendd-code-folder",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -11,11 +11,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@binance/connector": "^3.4.1",
     "express": "^4.21.0",
     "node-fetch": "^3.3.2",
     "pg": "^8.13.0"
   }
-
-,"type": "module"
-
+  ,"type": "module"
 }
